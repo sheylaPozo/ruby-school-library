@@ -2,8 +2,8 @@
 
 require_relative 'person'
 
-# Students information and methods
-class Student < Person
+# Teacher information and methods
+class Teacher < Person
   attr_reader :specialization
 
   def initialize(age:, specialization:, name: 'Unknown', parent_permission: true)
