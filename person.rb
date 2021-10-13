@@ -5,7 +5,7 @@ require_relative 'corrector'
 # Base data than all the people share
 class Person
   attr_accessor :name, :age, :rentals
-  attr_reader :id,
+  attr_reader :id
 
   def initialize(age:, parent_permission: true, name: 'Unknown')
     @id = Random.rand(1..1000)
