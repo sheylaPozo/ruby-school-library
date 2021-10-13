@@ -9,7 +9,7 @@ class Classroom
     @label = label
     @students = []
   end
-  
+
   def put_students(student)
     student.classroom = self
     @students.push(student)

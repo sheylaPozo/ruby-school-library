@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 
-require_relative 'corrector'
+# Book Element
+class Book
+  attr_accessor :title, :author
 
-# Contain information of the classrooms
-class Classroom
-  attr_accessor :label
-  attr_reader :students
-
-  def initialize(label)
-    @label = label
-    @students = []
+  def initialize(title, author)
+    @title = title
+    @author = author
   end
-  
-  def put_students(student)
-    student.classroom = self
-    @students.push(student)
+
+  def put_rentals(rental)
+    @rentals_list.push(rental)
+    rental.book = self
   end
 end
