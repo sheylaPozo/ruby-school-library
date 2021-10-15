@@ -31,4 +31,8 @@ class Person
   def of_age?
     age >= 18
   end
+
+  def present
+    "Name: #{@name},ID: #{@id},Age: #{@age}"
+  end
 end

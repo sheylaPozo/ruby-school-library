@@ -13,4 +13,8 @@ class Book
     @rentals_list.push(rental)
     rental.book = self
   end
+
+  def present(num)
+    puts " #{num}) Title: '#{@title}', Author: #{@author}"
+  end
 end
