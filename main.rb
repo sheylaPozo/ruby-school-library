@@ -85,6 +85,7 @@ def cr_a_person
   name = gets.chomp
   print('Age: ')
   age = gets.chomp
+  age = age.to_i
   if option == '1'
     permission = 'agegraegr'
     while permission != 'Y' && permission != 'N' && permission != 'y' && permission != 'n'
