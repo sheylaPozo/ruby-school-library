@@ -6,8 +6,8 @@ require_relative 'person'
 class Teacher < Person
   attr_reader :specialization
 
-  def initialize(age:, specialization:, name: 'Unknown', parent_permission: true)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(age, specialization, name)
+    super(name: name, age: age, parent_permission: true)
     @specialization = specialization
   end
 
@@ -15,7 +15,7 @@ class Teacher < Person
     true
   end
 
-  def appear
-    puts("[Teacher] #{present}")
+  def appear(reference)
+    puts("#{reference}) [Teacher] #{present}")
   end
 end
