@@ -6,72 +6,72 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
-require 'io/console'            
+require 'io/console'
 
-def continue_story                                                                                                               
-  print "press any key to continue"                                                                                                    
-  STDIN.getch                                                                                                              
-  print "            \r"                                                                                                              
-end          
+def continue_story
+  print 'press any key to continue'
+  $stdin.getch
+  print "            \r"
+end
 
 def clean
   system('clear') || system('cls')
 end
 
 def lis_t_books
-  if($book_list.length > 0)
-    puts("this is the list of all the books")
-    puts("")
+  if $book_list.length.positive?
+    puts('this is the list of all the books')
+    puts('')
     display_books
-    puts("")
+    puts('')
   end
-  if($book_list.length <= 0)
-    puts("There are not books")
-    puts("")
+  if $book_list.length <= 0
+    puts('There are not books')
+    puts('')
   end
   continue_story
-  return("there is a total of #{$book_list.length} books")
+  "there is a total of #{$book_list.length} books"
 end
 
 def display_persons
   index = 0
   while index < $person_list.length
-    $person_list[index].appear(index+1)
-    index +=1
+    $person_list[index].appear(index + 1)
+    index += 1
   end
-  puts("")
+  puts('')
 end
 
 def display_rentals(rent_list)
   index = 0
   while index < rent_list.length
-    rent_list[index].present(index+1)
-    index +=1
+    rent_list[index].present(index + 1)
+    index += 1
   end
-  puts("")
+  puts('')
 end
 
 def display_books
-  index = 0 
+  index = 0
   while index < $book_list.length
-    $book_list[index].present(index+1)
-    index +=1
+    $book_list[index].present(index + 1)
+    index += 1
   end
-  puts("")
+  puts('')
 end
 
 def lis_t_persons
-  if($person_list.length > 0)
-    puts("this is the list of all the people registered in the system")
-    puts("")
+  if $person_list.length.positive?
+    puts('this is the list of all the people registered in the system')
+    puts('')
     display_persons
   end
-  if($person_list.length <= 0)
-    puts("There are not people registered in the system")
-    puts("")
+  if $person_list.length <= 0
+    puts('There are not people registered in the system')
+    puts('')
   end
   continue_story
-  return("there is a total of #{$person_list.length} persons registered in the system")
+  "there is a total of #{$person_list.length} persons registered in the system"
 end
 
 def cr_a_person
@@ -96,13 +96,11 @@ def cr_a_person
     $person_list.push(new_student)
     return "Student #{new_student.name} have been created succesfully"
   end
-  if option == '2'
-    print('Specialization: ')
-    specialization = gets.chomp
-    new_teacher = Teacher.new(age, specialization, name)
-    $person_list.push(new_teacher)
-    return "Teacher #{new_teacher.name} have been created succesfully"
-  end
+  print('Specialization: ')
+  specialization = gets.chomp
+  new_teacher = Teacher.new(age, specialization, name)
+  $person_list.push(new_teacher)
+  "Teacher #{new_teacher.name} have been created succesfully"
 end
 
 def cr_a_book
@@ -115,62 +113,62 @@ def cr_a_book
   "Book #{new_book.title} have been created succesfully"
 end
 
-def cr_a_rental()
-  if($person_list.length > 0 and $book_list.length > 0)
+def cr_a_rental
+  if $person_list.length.positive? && $book_list.length.positive?
     ob_person = 0
-    while(not (ob_person >=1 && ob_person < $person_list.length+1))
-      puts("select one person in the list to create the rental, using the numbers of the left")
-      puts("")
+    until ob_person >= 1 && ob_person < $person_list.length + 1
+      puts('select one person in the list to create the rental, using the numbers of the left')
+      puts('')
       display_persons
       ob_person = gets.chomp
       ob_person = ob_person.to_i
     end
-    ob_person = $person_list[ob_person-1]
+    ob_person = $person_list[ob_person - 1]
     ob_book = 0
     clean
-    while(not (ob_book >=1 && ob_book < $book_list.length+1))
-      puts("select one book to create the rental, using the numbers of the left")
-      puts("")
+    until ob_book >= 1 && ob_book < $book_list.length + 1
+      puts('select one book to create the rental, using the numbers of the left')
+      puts('')
       display_books
       ob_book = gets.chomp
       ob_book = ob_book.to_i
     end
-    (clean)
-    ob_book = $book_list[ob_book-1]
-    puts("insert a date")
+    clean
+    ob_book = $book_list[ob_book - 1]
+    puts('insert a date')
     date = gets.chomp
-    new_rental = Rental.new(date,ob_book,ob_person)
+    Rental.new(date, ob_book, ob_person)
 
-    return("Rental created succesfully")
+    return('Rental created succesfully')
   end
-  puts("books and persons should be registered in the system to do a rental")
-  puts("")
+  puts('books and persons should be registered in the system to do a rental')
+  puts('')
   continue_story
-  return("books and persons should be registered in the system to do a rental")
+  'books and persons should be registered in the system to do a rental'
 end
 
 def lis_t_rentals
-  if($person_list.length > 0 and $book_list.length > 0)
+  if $person_list.length.positive? && $book_list.length.positive?
     ob_person = 0
-    while(not (ob_person >=1 && ob_person < $person_list.length+1))
+    until ob_person >= 1 && ob_person < $person_list.length + 1
       clean
-      puts("select one person in the list to looks their rentals, using the numbers of the left")
-      puts("")
+      puts('select one person in the list to looks their rentals, using the numbers of the left')
+      puts('')
       display_persons
       ob_person = gets.chomp
       ob_person = ob_person.to_i
     end
     clean
-    ob_person = $person_list[ob_person-1]
+    ob_person = $person_list[ob_person - 1]
     puts("this are the rentals of #{ob_person.name}")
     display_rentals(ob_person.rentals)
-    puts("")
+    puts('')
     continue_story
   end
 end
 
 def exit
-  "bye"
+  'bye'
 end
 
 def menu(string)
@@ -192,20 +190,20 @@ def menu(string)
 end
 
 def procces_option(entry)
-  return (lis_t_books) if entry == "1"
-  return (lis_t_persons) if entry == "2"
-  return (cr_a_person) if entry == '3'
-  return (cr_a_book) if entry == '4'
-  return (cr_a_rental) if entry == '5'
-  return (lis_t_rentals) if entry == "6"
-  return (exit) if entry == "7"
+  return lis_t_books if entry == '1'
+  return lis_t_persons if entry == '2'
+  return cr_a_person if entry == '3'
+  return cr_a_book if entry == '4'
+  return cr_a_rental if entry == '5'
+  return lis_t_rentals if entry == '6'
+  return exit if entry == '7'
 end
 
 def main
   $person_list = []
   $book_list = []
   text = 'Welcome to School Library App!'
-  while(text != "bye")
+  while text != 'bye'
     entry = menu(text)
     text = procces_option(entry)
   end
