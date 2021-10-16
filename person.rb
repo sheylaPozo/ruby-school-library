@@ -22,6 +22,11 @@ class Person
     false
   end
 
+  def put_rentals(rental)
+    @rentals.push(rental)
+    rental.person = self
+  end
+
   def validate_name
     @name = @corrector.correct_name @name
   end
@@ -30,5 +35,9 @@ class Person
 
   def of_age?
     age >= 18
+  end
+
+  def present
+    "Name: #{@name},ID: #{@id},Age: #{@age}"
   end
 end

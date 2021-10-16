@@ -10,3 +10,5 @@
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
   Max: 41
+Metrics/MethodLength:
+  Max: 1000000
