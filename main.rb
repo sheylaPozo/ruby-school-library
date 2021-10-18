@@ -3,6 +3,7 @@
 require_relative 'console'
 require_relative 'handler'
 
+# Is the main app class, there are all the menu related function, with the logic saved in the handler.rb
 class App
   include Handler
   def menu(string)

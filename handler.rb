@@ -7,6 +7,8 @@ require_relative 'rental'
 require_relative 'console'
 require 'io/console'
 
+
+# Have all the logic of the program
 module Handler
   def display_persons
     index = 0
@@ -35,13 +37,19 @@ module Handler
     puts('')
   end
 
-  def display_rentals(rent_list)
-    index = 0
-    while index < rent_list.length
-      rent_list[index].present(index + 1)
-      index += 1
+  def lis_t_books
+    if $book_list.length.positive?
+      puts('this is the list of all the books')
+      puts('')
+      display_books
+      puts('')
     end
-    puts('')
+    if $book_list.length <= 0
+      puts('There are not books')
+      puts('')
+    end
+    Console.continue_story
+    "there is a total of #{$book_list.length} books"
   end
 
   def lis_t_persons
