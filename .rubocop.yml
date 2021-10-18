@@ -10,5 +10,7 @@ Metrics/CyclomaticComplexity:
   Max: 1000000
 Metrics/AbcSize:
   Max: 1000000
+Metrics/ModuleLength:
+  Max: 1000000
 Style/GlobalVars:
   Enabled: false
