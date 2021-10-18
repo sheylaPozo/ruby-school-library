@@ -7,7 +7,6 @@ require_relative 'rental'
 require_relative 'console'
 require 'io/console'
 
-
 # Have all the logic of the program
 module Handler
   def display_persons
