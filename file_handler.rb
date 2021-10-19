@@ -26,7 +26,12 @@ module FileHandler
     when "book"
       new_book=Book.new(line[1],line[2])
       $book_list.push(new_book)
+    when "student"
+      permission = (line[4] == "True")
+      new_student=Student.new(line[1].to_i,line[2],line[3],permission,line[5].chomp)
+      $person_list.push(new_student)
     end
+    
   end
   
   def self.save
