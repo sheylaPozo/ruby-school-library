@@ -12,7 +12,6 @@ class Book
 
   def put_rentals(rental)
     @rentals_list.push(rental)
-    rental.book = self
   end
 
   def present(num)
