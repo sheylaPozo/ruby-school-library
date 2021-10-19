@@ -33,6 +33,9 @@ module FileHandler
     when "teacher"
       new_teacher=Teacher.new(line[1].to_i,line[2],line[3],line[4].chomp)
       $person_list.push(new_teacher)
+    when "rental"
+      new_rental = Rental.new(line[1],line[2].to_i,line[3].chomp.to_i)
+      $rental_list.push(new_rental)
     end
     
   end
