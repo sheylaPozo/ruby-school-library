@@ -6,11 +6,10 @@ require_relative 'corrector'
 class Person
   attr_accessor :name, :age, :rentals, :parent_permission
   attr_reader :id
+
   def initialize(name: 'Unknown', age: 0, parent_permission: true, id: Random.rand(1..1000))
     @id = id
-    if(id == nil)
-      @id = Random.rand(1..1000)
-    end
+    @id = Random.rand(1..1000) if id.nil?
     @name = name
     @age = age
     @parent_permission = parent_permission

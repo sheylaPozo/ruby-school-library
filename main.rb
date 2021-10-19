@@ -4,6 +4,7 @@ require_relative 'console'
 require_relative 'handler'
 require_relative 'file_handler'
 
+# the main application class
 class App
   include Handler
   include FileHandler
@@ -28,15 +29,14 @@ class App
   def run
     $person_list = []
     $book_list = []
-    $rental_list =[]
-    FileHandler.open_save()
+    $rental_list = []
+    FileHandler.open_save
     text = 'Welcome to School Library App!'
     while text != 'bye'
       entry = menu(text)
       text = procces_option(entry)
     end
     FileHandler.save
-    Console.continue_story
   end
 end
 

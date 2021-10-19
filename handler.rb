@@ -7,6 +7,7 @@ require_relative 'rental'
 require_relative 'console'
 require 'io/console'
 
+# all the logic of the program
 module Handler
   def lis_t_books
     if $book_list.length.positive?
@@ -83,11 +84,11 @@ module Handler
         puts('have parents permissions (Y/N)?')
         permission = gets.chomp
       end
-      if(permission == "y" || permission == "Y")
-        permission = true
-      else
-        false
-      end
+      permission = if %w[y Y].include?(permission)
+                     true
+                   else
+                     false
+                   end
       new_student = Student.new(age, 'later', name, permission, nil)
       $person_list.push(new_student)
       return "Student #{new_student.name} have been created succesfully"
@@ -119,7 +120,7 @@ module Handler
         ob_person = gets.chomp
         ob_person = ob_person.to_i
       end
-      ob_person = ob_person -1
+      ob_person -= 1
       ob_book = 0
       Console.clean
       until ob_book >= 1 && ob_book < $book_list.length + 1
@@ -129,12 +130,12 @@ module Handler
         ob_book = gets.chomp
         ob_book = ob_book.to_i
       end
-      ob_book = ob_book -1
+      ob_book -= 1
       Console.clean
       puts('insert a date')
       date = gets.chomp
 
-      new_rental=Rental.new(date, ob_book, ob_person)
+      new_rental = Rental.new(date, ob_book, ob_person)
       $rental_list.push(new_rental)
 
       return('Rental created succesfully')
@@ -157,7 +158,7 @@ module Handler
         ob_person = ob_person.to_i
       end
       Console.clean
-      ob_person = ob_person - 1
+      ob_person -= 1
       puts("this are the rentals of #{$person_list[ob_person].name}")
       display_rentals($person_list[ob_person].rentals)
       puts('')
