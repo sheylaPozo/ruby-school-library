@@ -30,6 +30,9 @@ module FileHandler
       permission = (line[4] == "True")
       new_student=Student.new(line[1].to_i,line[2],line[3],permission,line[5].chomp)
       $person_list.push(new_student)
+    when "teacher"
+      new_teacher=Teacher.new(line[1].to_i,line[2],line[3],line[4].chomp)
+      $person_list.push(new_teacher)
     end
     
   end
