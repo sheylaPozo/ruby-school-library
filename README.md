@@ -40,12 +40,18 @@ After a given person position in the list, the program will display all the rent
 
 Close the menu finally, and end the program
 
-## Author
+## Authors
 
 👤 **Carlos Arturo Ortegega Guanipa**
 
 - GitHub: [@githubhandle](https://github.com/eroiyo)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/carlos-arturo-ortega-guanipa/)
+
+👤 **Sheyla Pozo** 
+
+- Github:[Sheyla Pozo](https://github.com/sheylaPozo)
+- Linkedin: [Sheyla Pozo](https://www.linkedin.com/in/sheypozo/)
+
 
 ## 🤝 Contributing
 
