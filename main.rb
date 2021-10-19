@@ -2,10 +2,11 @@
 
 require_relative 'console'
 require_relative 'handler'
+require_relative 'file_handler'
 
-# Is the main app class, there are all the menu related function, with the logic saved in the handler.rb
 class App
   include Handler
+  include FileHandler
   def menu(string)
     Console.clean
     puts(string)
@@ -27,11 +28,15 @@ class App
   def run
     $person_list = []
     $book_list = []
+    $rental_list =[]
+    FileHandler.open_save()
     text = 'Welcome to School Library App!'
     while text != 'bye'
       entry = menu(text)
       text = procces_option(entry)
     end
+    FileHandler.save
+    Console.continue_story
   end
 end
 
