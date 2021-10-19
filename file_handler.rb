@@ -19,6 +19,15 @@ module FileHandler
 
     return false
   end
+
+  def self.insert(line)
+    line = line.split("|")
+    case line[0]
+    when "book"
+      new_book=Book.new(line[1],line[2])
+      $book_list.push(new_book)
+    end
+  end
   
   def self.save
     serial = []
