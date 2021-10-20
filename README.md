@@ -52,6 +52,7 @@ Close the menu finally, and end the program
 - Github:[Sheyla Pozo](https://github.com/sheylaPozo)
 - Linkedin: [Sheyla Pozo](https://www.linkedin.com/in/sheypozo/)
 
+---
 
 ## 🤝 Contributing
 
