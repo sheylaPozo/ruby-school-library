@@ -12,6 +12,11 @@ class Rental
     $person_list[person].put_rentals(self)
   end
 
+  def to_json(*_args)
+    hash = { date: @date, book: @book, person: @person }
+    JSON.generate(hash)
+  end
+
   def present(num)
     puts " #{num}) Book: '#{$book_list[@book].title}', Date: #{@date}"
   end

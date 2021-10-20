@@ -11,6 +11,11 @@ class Teacher < Person
     @specialization = specialization
   end
 
+  def to_json(*_args)
+    hash = { age: @age, specialization: @specialization, name: @name, id: @id }
+    JSON.generate(hash)
+  end
+
   def can_use_services?
     true
   end
