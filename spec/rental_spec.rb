@@ -13,7 +13,7 @@ describe Test do
     $person_list.push(mock_p)
     mock_b = Book.new('Una Muerte Anunciada', 'Gabriel Garcia Marquez')
     $book_list.push(mock_b)
-    mock= Rental.new("31/12/1999",0,0);
-    expect(mock.date).to eq("31/12/1999")
+    mock = Rental.new('31/12/1999', 0, 0)
+    expect(mock.date).to eq('31/12/1999')
   end
 end
