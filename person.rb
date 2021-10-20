@@ -7,7 +7,7 @@ class Person
   attr_accessor :name, :age, :rentals, :parent_permission
   attr_reader :id
 
-  def initialize(name: 'Unknown', age: 0, parent_permission: true, id: Random.rand(1..1000))
+  def initialize(name, age, parent_permission, id)
     @id = id
     @id = Random.rand(1..1000) if id.nil?
     @name = name
@@ -18,7 +18,7 @@ class Person
   end
 
   def can_use_services?
-    return true if is_of_age? || @parent_permission
+    return true if of_age? || @parent_permission
 
     false
   end
