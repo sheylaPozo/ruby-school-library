@@ -4,11 +4,12 @@ require_relative 'corrector'
 
 # Base data than all the people share
 class Person
-  attr_accessor :name, :age, :rentals
+  attr_accessor :name, :age, :rentals, :parent_permission
   attr_reader :id
 
-  def initialize(age:, parent_permission: true, name: 'Unknown')
-    @id = Random.rand(1..1000)
+  def initialize(name: 'Unknown', age: 0, parent_permission: true, id: Random.rand(1..1000))
+    @id = id
+    @id = Random.rand(1..1000) if id.nil?
     @name = name
     @age = age
     @parent_permission = parent_permission
@@ -24,7 +25,6 @@ class Person
 
   def put_rentals(rental)
     @rentals.push(rental)
-    rental.person = self
   end
 
   def validate_name

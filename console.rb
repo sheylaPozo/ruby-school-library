@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Do some operations usefuls to clean and wait for the comandline programs
+# usefull functions to control the console
 module Console
   def self.continue_story
     print 'press any key to continue'

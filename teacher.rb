@@ -6,9 +6,14 @@ require_relative 'person'
 class Teacher < Person
   attr_reader :specialization
 
-  def initialize(age, specialization, name)
-    super(name: name, age: age, parent_permission: true)
+  def initialize(age, specialization, name, id)
+    super(name: name, age: age, parent_permission: true, id: id)
     @specialization = specialization
+  end
+
+  def to_json(*_args)
+    hash = { age: @age, specialization: @specialization, name: @name, id: @id }
+    JSON.generate(hash)
   end
 
   def can_use_services?

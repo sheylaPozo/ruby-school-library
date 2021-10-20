@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
+require 'json'
 require_relative 'person'
 
 # Students information and methods
 class Student < Person
   attr_reader :classroom
 
-  def initialize(age, classroom, name, parent_permission)
-    super(name: name, age: age, parent_permission: parent_permission)
+  def initialize(age, classroom, name, parent_permission, id)
+    super(age: age, name: name, parent_permission: parent_permission, id: id)
     @classroom = classroom
+  end
+
+  def to_json(*_args)
+    hash = { age: @age, classroom: @classroom, name: @name, parent_permission: parent_permission, id: @id }
+    JSON.generate(hash)
   end
 
   def play_hooky

@@ -10,9 +10,13 @@ class Book
     @rentals_list = []
   end
 
+  def to_json(*_args)
+    hash = { title: @title, author: @author }
+    JSON.generate(hash)
+  end
+
   def put_rentals(rental)
     @rentals_list.push(rental)
-    rental.book = self
   end
 
   def present(num)

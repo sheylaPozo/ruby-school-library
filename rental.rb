@@ -6,13 +6,18 @@ class Rental
 
   def initialize(date, book, person)
     @date = date
-    book.present(0)
-    person.appear(0)
-    book.put_rentals(self)
-    person.put_rentals(self)
+    @book = book
+    @person = person
+    $book_list[book].put_rentals(self)
+    $person_list[person].put_rentals(self)
+  end
+
+  def to_json(*_args)
+    hash = { date: @date, book: @book, person: @person }
+    JSON.generate(hash)
   end
 
   def present(num)
-    puts " #{num}) Book: '#{@book.title}', Date: #{@date}"
+    puts " #{num}) Book: '#{$book_list[@book].title}', Date: #{@date}"
   end
 end
