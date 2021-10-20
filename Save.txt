@@ -1,0 +1,5 @@
+book|Una Muerte Anunciada|Gabriel Garcia Marquez
+book|Python new world|Arturo
+student|21|later|Arturo|false|353
+teacher|50|Biology|Hector|601
+rental|2005|0|0

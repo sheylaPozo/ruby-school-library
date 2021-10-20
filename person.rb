@@ -4,21 +4,27 @@ require_relative 'corrector'
 
 # Base data than all the people share
 class Person
-  attr_accessor :name, :age
-  attr_reader :id, :rentals
+  attr_accessor :name, :age, :rentals, :parent_permission
+  attr_reader :id
 
-  def initialize(age:, parent_permission: true, name: 'Unknown')
-    @id = Random.rand(1..1000)
+  def initialize(name, age, parent_permission, id)
+    @id = id
+    @id = Random.rand(1..1000) if id.nil?
     @name = name
     @age = age
     @parent_permission = parent_permission
     @corrector = Corrector.new
+    @rentals = []
   end
 
   def can_use_services?
-    return true if is_of_age? || @parent_permission
+    return true if of_age? || @parent_permission
 
     false
+  end
+
+  def put_rentals(rental)
+    @rentals.push(rental)
   end
 
   def validate_name
@@ -29,5 +35,9 @@ class Person
 
   def of_age?
     age >= 18
+  end
+
+  def present
+    "Name: #{@name},ID: #{@id},Age: #{@age}"
   end
 end
